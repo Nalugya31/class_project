@@ -72,11 +72,19 @@ def issue_item(request,pk):
     
 
 
-def receipt_detail(request,id):
-    pass
+def receipt_detail(request,receipt_id):
+    receipt=Sale.objects.get(id=receipt_id)
+    return render(request,'project/receipt_detail.html',{'receipt':receipt})
 
+
+@login_required
 def all_sales(request):
-    pass
+    
+    sales=Sale.objects.all()
+    total=sum([items.amount_received for items in sales])
+    change=sum([items.get_change() for items in sales])
+    net=total-change
+    return render(request, 'project/all_sales.html',{'sales':sales, 'total':total, 'change':change, 'net':net})
 
 def add_to_stock(request):
     pass
