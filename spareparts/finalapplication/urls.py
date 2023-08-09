@@ -30,6 +30,9 @@ urlpatterns =[
     path('add_to_stock/<str:pk>',views.add_to_stock,name='add_to_stock'),
     path('all_sales/',views.all_sales,name='all_sales'),
 
+  # delete path.
+    path('delete/<int:product_id>',views.delete_detail,name='delete_detail'),
+
 
   #login and logout
     path('login/',auth_views.LoginView.as_view(template_name='project/login.html'),name='login'),

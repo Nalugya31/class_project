@@ -31,12 +31,55 @@
                 <td>{{product.total_quantity}}</td>
                 <td>UGX{{product.unit_price}}</td>
                 <!-- here we are hadling the buy item link n its handled by product_detail view -->
-                <td><a href="{% url 'product_detail' product.id %}"><input type="submit" value="BUY ITEM"
-                            class="btn btn-secondary btn" type="button" /></a></td>
+                <td>
+                    <a href="{% url 'product_detail' product.id %}"><input type="submit" value="BUY ITEM"
+                            class="btn btn-secondary btn" type="button" /></a>
+                </td>
 
 
-                <td><a href=""><input type="submit" value="Delete ITEM"
-                            class="btn btn-secondary btn" type="button" /></a></td>
+
+
+
+                <td>
+                    
+                <div class="del"><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Delete
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                    <a href="{% url 'delete_detail' product.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Button trigger modal -->
+                </td>
+
+
+                <!-- <td  id="mydelete_btn1" style="display:inline-block;">
+                    
+                    <input value="Delete ITEM"
+                            class="btn btn-secondary btn" type="button"  onclick="funki()"
+                           /></td> -->
+
+                <!-- <td id="mydelete_btn2" style="display: none;"><a href="{% url 'delete_detail' product.id %}"><input value="Delete ITEM"class="btn btn-danger btn" type="button" onclick="funki()"
+                    /></a></td> -->
 
 
 

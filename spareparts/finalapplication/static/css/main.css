@@ -18,8 +18,8 @@ html,body {
 body{
       /* background-color: hsl(0, 0%, 98%); */
       font-family: 'raleway';
-      color:#A7A1AE;
-      background-color:#1F2739;
+      /* color:#A7A1AE;
+      background-color:#1F2739; */
  }
     
 
@@ -29,7 +29,7 @@ form {
 }
 
 .navbar {
-    background-color:hsl(216, 25%, 90%);
+    background-color:lightgreen;
 }
 
 .navbar li a :hover{
@@ -79,12 +79,18 @@ form {
     background-color: #4CAF50;
   }
   .footer{
-    /* display:flex; */
-    padding-top: auto;
-    background-color: hsl(216, 25%, 90%);
+    background-color:lightgreen;
+    padding:25px;
+    width:100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    margin-top: 140px;
     }
+
+ 
     tbody{
-      color: #fff;
+      color:lightblue;
     }
      tr:hover {
       background-color: #464A52;
@@ -117,4 +123,35 @@ form {
           color: red;
 }
 
-   
+.button {
+  font-family: "Arial", sans-serif;
+  background-color: lightblue;
+  border: 10px lightblue;
+  color: navyblue;
+  font-size: 30px;
+  text-align: center;
+  line-height: 0;
+  cursor:pointer;
+  border-radius: 8px;
+  height:40px;
+  width:100px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  font-size: medium;
+}
+.button:visited{
+  background-image:none;
+  background-color: red;
+  font-size: 35px;
+  border: 10px dashed black;
+  color: black;
+}
+
+.button:hover{
+  background-image:none;
+  background-color:#343a40;
+  font-size: 35px;
+  border: 10px #343a40;
+  color: lightblue;
+  font-size: large;
+}

@@ -10,7 +10,8 @@
     ">ADD TO STOCK FORM</h1><br>
     {% csrf_token %} 
     {{form | crispy}}
-    <input type = "submit" class="btn btn-secondary btn"type="button">
+    <!-- <input type = "submit" class="btn btn-secondary btn"type="button"> -->
+    <button class="button" type="submit" onclick="onClick()">Submit</button>
   </form>
 </div>
 {% endblock %}
