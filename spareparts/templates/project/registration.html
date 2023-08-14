@@ -1,0 +1,18 @@
+{% extends 'project/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+
+<form id="form" method="POST" novalidate>
+
+    {% csrf_token %}
+    <h2>Register here please</h2>
+    {{form | crispy}}
+    <br>
+    <input type="submit" name="Submit"  value="Register" class="btn   btn-danger btn-block submit"> <br>
+</form>
+
+{% endblock %}

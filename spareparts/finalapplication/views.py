@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from .forms import ImageUploadForm
 # importing our models
 from .models import *
 # importing our form
@@ -33,7 +34,7 @@ def home(request):
 # querying our database and telling it to order items by id but it can be anything eg name
 # line 29 fetches all the data from `the database using product model.`
 # line 30 filters the products and provides us with data based on user input.
-    products=Product.objects.all().order_by('-id')
+    products=Product.objects.all().order_by('id')
     product_filters=ProductFilter(request.GET,queryset=products)
     products=product_filters.qs
     # not_negative=products.total_quantity
@@ -130,10 +131,44 @@ def add_to_stock(request,pk):
 
 @login_required
 def delete_detail(request,product_id):
+    print("This is a product id")
+    print(product_id)
     delete_product=Product.objects.get(id=product_id)
     delete_product.delete()
     return HttpResponseRedirect(reverse('home'))
 
+def registration(request):
+    if request.method == 'GET':
+        form=RegistrationForm()
+        return render(request, 'project/registration.html', {'form': form})
+    if request.method == 'POST':
+        form=RegistrationForm(request.POST)
+        if form.is_valid():
+            User=form.save(commit=False)
+            User.username=User.username.lower()
+            User.save()
+            return redirect('login')
+        else:
+            return render(request, 'project/registration.html', {'form':form})
+        
+
+
+
+
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('image_list')  # Redirect to a view that displays uploaded images
+    else:
+        form = ImageUploadForm()
+    return render(request, 'project/upload.html', {'form': form})
+
+
+def image_list(request):
+    images = MyImage.objects.all()  # Query all images from the database.
+    return render(request, 'project/image_list.html', {'images': images})
 
 
 # Create your views here.

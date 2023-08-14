@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.core.validators import MinValueValidator
 # we are accessing a registration user model.
 from django.contrib.auth.models import AbstractUser
+from PIL import Image
+
 # Create your models here.
 # category is inheriting from models.Model
 # registration form for users.
@@ -19,8 +21,19 @@ from django.contrib.auth.models import AbstractUser
 #         verbose_name_plural='Users'
 
 
+
+
+
+
+
+
+
+
+
+
 class Category(models.Model):
     name=models.CharField(max_length=50,null=False,blank=False,unique=True)
+
     def __str__(self):
         return self.name
 # defining a model for product
@@ -55,6 +68,16 @@ class Sale(models.Model):
     part_name=models.CharField(max_length=50,null=False, blank=False)
     unit_price=models.IntegerField(default=0,null=False, blank=False)#for installments.
     
+
+
+class MyImage(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/')
+
+
+
+
+
     # the sales made so far(total)
     def get_total(self):
         total=self.quantity*self.item.unit_price  

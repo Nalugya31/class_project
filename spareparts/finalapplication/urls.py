@@ -2,6 +2,8 @@ from django.urls import path
 #lets re-use the django login view.
 from django.contrib.auth import views as auth_views
 
+from .import views
+
 
 
 #lets import a file called views from "myapp" application.
@@ -37,6 +39,11 @@ urlpatterns =[
   #login and logout
     path('login/',auth_views.LoginView.as_view(template_name='project/login.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='project/index.html'),name='logout'),
-    
+   # registration 
+    path('registration/',views.registration,name='registration'),
+
+   # image.
+    path('upload/', views.upload_image, name='upload_image'),
+    path('image-list/', views.image_list, name='image_list'),
     
 ]

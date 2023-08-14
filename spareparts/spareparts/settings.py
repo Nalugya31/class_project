@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'bootstrap5',
     'django_filters',
+    'PIL',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Handling redirect of a sucessful user from here;
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'index'
+
+
+# is a setting that defines the base URL where media files are served from. 
+# It specifies the URL prefix that will be used to construct the URLs for accessing media files.
+MEDIA_URL = '/media/'
+# is a setting that defines the absolute filesystem path to the directory where media
+#  files will be stored on the server's file system.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
